@@ -1,4 +1,4 @@
-# object-discovery-cp-gan
+# Object Discovery with a Copy-Pasting GAN
 
 This repository implements [1] in Python using the PyTorch framework, with some extra features that I found seem to improve the performance on realistic datasets. In this system, a generator neural network G is trained to produce copy masks, and a discriminator D then judges the quality of that object mask by trying to distinguish between real foreground images, and composite images where the segmented foreground has been pasted onto another background. A number of tricks (most notably anti-shortcut and grounded fakes) need to be employed to help convergence during training.
 
@@ -10,7 +10,7 @@ python train_cpgan.py --dataset squares --gpus 0 1 --batch_size 64
 python train_cpgan.py --dataset noisy --gpus 2 3 --batch_size 64
 python train_cpgan.py --dataset birds --gpus 4 5 --batch_size 64 --img_dim 64 --blur_sigma 2 --autoencode
 ```
-Both `squares` and `noisy` require CIFAR-10 under `data/CIFAR-10/train` and `data/CIFAR-10/test`, which can be downloaded in PNG format [here](https://pjreddie.com/projects/cifar-10-dataset-mirror/). The third example is a custom dataset, described below.
+Both `squares` and `noisy` require CIFAR-10 under `data/CIFAR-10/train` and `data/CIFAR-10/test`, which can be downloaded in PNG format [here](https://pjreddie.com/projects/cifar-10-dataset-mirror/). The third example is a custom dataset, described below. You can visualize the training curves and results in `tb_runs/` (using Tensorboard) and `images/`.
 
 ## Datasets
 
