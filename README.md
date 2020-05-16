@@ -1,6 +1,8 @@
 # Object Discovery with a Copy-Pasting GAN
 
-This repository implements [1] in Python using the PyTorch framework, with some extra features that I found seem to improve the performance on realistic datasets. In this system, a generator neural network G is trained to produce copy masks, and a discriminator D then judges the quality of that object mask by trying to distinguish between real foreground images, and composite images where the segmented foreground has been pasted onto another background. A number of tricks (most notably anti-shortcut and grounded fakes) need to be employed to help convergence during training.
+This repository implements [1] in Python using the PyTorch framework, along with some extra features that seem to improve the performance on realistic datasets. In this system, a generator neural network G is trained to produce copy masks, and a discriminator D then judges the quality of that object mask by trying to distinguish between real foreground images, and composite images where the segmented foreground has been pasted onto another background. A number of tricks (most notably anti-shortcut and grounded fakes) need to be employed to help convergence during training.
+
+![CP-GAN training diagram](train_diagram.png)
 
 ## Usage
 
