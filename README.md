@@ -47,7 +47,7 @@ The nature of training requires that we curate a dataset consisting of two separ
             ├── g.jpg
             └── h.jpg
 ```
-Here, `birds` can be any custom folder name as long as you supply it with the `--dataset` argument. Note that the masks must correspond to the images in the foreground folders, and must have the exact same file names.
+Here, `birds` can be any custom folder name as long as you supply it with the `--dataset` argument. Note that the masks must correspond to the images in the foreground folders, and must have the exact same file names. Both JPG and PNG files are supported.
 
 ## Features
 
