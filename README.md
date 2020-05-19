@@ -1,6 +1,6 @@
 # Object Discovery with a Copy-Pasting GAN
 
-This repository implements [1] in Python using the PyTorch framework, along with some extra features that seem to improve the performance on realistic datasets. In this system, a generator neural network G is trained to produce copy masks, and a discriminator D then judges the quality of that object mask by trying to distinguish between real foreground images, and composite images where the segmented foreground has been pasted onto another background. A number of tricks (most notably anti-shortcut and grounded fakes) need to be employed to help convergence during training.
+This repository implements [1] in Python using the PyTorch framework, along with an extra feature that seems to improve the performance on realistic datasets. In this system, a generator neural network G is trained to produce copy masks, and a discriminator D then judges the quality of that object mask by trying to distinguish between real foreground images, and composite images where the segmented foreground has been pasted onto another background. A number of tricks (most notably anti-shortcut and grounded fakes) need to be employed to help convergence during training.
 
 ![CP-GAN training diagram](train_diagram.png)
 
@@ -58,7 +58,7 @@ Here, `birds` can be any custom folder name as long as you supply it with the `-
 * Discriminator input blurring to avoid low-level shortcuts
 * Grounded fakes to stabilize training
 
-*Extra features:*
+*Extra features (note: these are just my ideas and are not part of the paper):*
 
 * **Object autoencoding:** A direct generative method in RGB space was not pursued in [1] on the basis of their observation that discriminative methods are rising in popularity. We however believe that there is promise in trying to reconstruct the object in addition to just localizing its boundaries. More specifically, this change should prevent the generator G from copying irrelevant pixels, and also to specialize in just one kind of object, namely that which we are interested in by design of the dataset. During training, we insert a pixel-wise reconstruction loss that is weighted by the mask, and copy the highlighted objects from the autoencoded generator output rather than directly from the source image. Note that the operation at test time is identical to the original CP-GAN, in the sense that we can discard the RGB reconstruction and simply use the generated hard mask instead.
 
